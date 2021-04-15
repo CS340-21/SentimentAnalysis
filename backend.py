@@ -8,18 +8,26 @@ import tweepy
 import json
 import csv
 
-CONSUMER_KEY = 'X'
-CONSUMER_SECRET = 'X'
-ACCESS_KEY = 'X'
-ACCESS_SECRET = 'X'
+#CONSUMER_KEY = 'X'
+#CONSUMER_SECRET = 'X'
+#ACCESS_KEY = 'X'
+#ACCESS_SECRET = 'X'
 
-auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
+#auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+#auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 
-api = tweepy.API(auth)
-
+#api = tweepy.API(auth)
 #this is just for testing, eventually use this to set the search parameter
 def Search(srch, num_tweets):
+    CONSUMER_KEY = 'X'
+    CONSUMER_SECRET = 'X'
+    ACCESS_KEY = 'X'
+    ACCESS_SECRET = 'X'
+
+    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+    auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
+
+    api = tweepy.API(auth)
     print ("Searched for" + srch + "in backend")
     #set a string = to search and then set q = to that string in line 41
 
@@ -142,19 +150,23 @@ def get_text_pol(data):
     return i
 
 
-df = pd.read_csv('data.csv')
+#df = pd.read_csv('data.csv')
 
-df['Subjectivity'] = df['info'].apply(get_text_sub)
-df['Polarity'] = df['info'].apply(get_text_pol)
+#df['Subjectivity'] = df['info'].apply(get_text_sub)
+#df['Polarity'] = df['info'].apply(get_text_pol)
 
-print(sub_arr)
-print(pol_arr)
-pol_arr_count = pol_arr
+#pol_arr_count = pol_arr
 
-make_barchart(pol_arr, 0)
-make_piechart(pol_arr, 0)
+def run_analysis(q, num):
+    df = pd.read_csv('data.csv')
+    df['Subjectivity'] = df['info'].apply(get_text_sub)
+    df['Polarity'] = df['info'].apply(get_text_pol)
+    
+    search(q, num)
+    make_barchart(pol_arr, 0)
+    make_piechart(pol_arr, 0)
 
-make_barchart(sub_arr, 1)
-make_piechart(sub_arr, 1)
+    make_barchart(sub_arr, 1)
+    make_piechart(sub_arr, 1)
 
 #we need to call a method in GUI.py to tell it to load the images
