@@ -19,10 +19,10 @@ import csv
 #api = tweepy.API(auth)
 #this is just for testing, eventually use this to set the search parameter
 def Search(srch, num_tweets):
-    CONSUMER_KEY = 'X'
-    CONSUMER_SECRET = 'X'
-    ACCESS_KEY = 'X'
-    ACCESS_SECRET = 'X'
+    CONSUMER_KEY = '6NhgQKlvac5m27tlbjvClYAxD'
+    CONSUMER_SECRET = '7nQ4j5hDlRWE5AGcAxrdw8WqF6yJxzX5gl6nWDmKezpKAvDgtN'
+    ACCESS_KEY = '1057110504244678656-oJHI7FFjqBNTp2prRxXcMMtBJttKEK'
+    ACCESS_SECRET = 'bNsOVnSVVERiJefUt1n6efZPsGtnbFdFYB0ZlvulmcTq3'
 
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
     auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
