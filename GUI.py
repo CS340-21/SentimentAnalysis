@@ -1,7 +1,7 @@
 from dearpygui.core import *
 from dearpygui.simple import *
 import csv
-#import backend.py as be
+from backend import *
 import os
 
 
@@ -33,7 +33,7 @@ def callback(sender, data):
         num_tweets = get_value("Number")
         #this calls the Search function in backend.py with the searched term as
         #the parameter and num_tweets as number of tweets
-        #be.Search(srch_val, num_tweets)
+        run_analysis(srch_val, num_tweets)
         print("Searched for " + srch_val + "over " + num_tweets + " tweets.")
 
 #method to load images starts here

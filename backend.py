@@ -18,7 +18,10 @@ import csv
 
 #api = tweepy.API(auth)
 #this is just for testing, eventually use this to set the search parameter
-def Search(srch, num_tweets):
+sub_arr = [0, 0]
+pol_arr = [0, 0, 0]
+
+def search(srch, num_tweets):
     CONSUMER_KEY = '6NhgQKlvac5m27tlbjvClYAxD'
     CONSUMER_SECRET = '7nQ4j5hDlRWE5AGcAxrdw8WqF6yJxzX5gl6nWDmKezpKAvDgtN'
     ACCESS_KEY = '1057110504244678656-oJHI7FFjqBNTp2prRxXcMMtBJttKEK'
@@ -28,7 +31,7 @@ def Search(srch, num_tweets):
     auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 
     api = tweepy.API(auth)
-    print ("Searched for" + srch + "in backend")
+    print ("Searched for " + srch + " over " + str(int(num_tweets) // 7) + " in backend")
     #set a string = to search and then set q = to that string in line 41
 
     # the until parameter limits the collection to tweets sent just before the specified day (11:59pm the previous day)
@@ -46,7 +49,7 @@ def Search(srch, num_tweets):
             # Change q pararmeter to fetch tweets of a different topic
             # Change items parameter to fetch x amount of tweets for each date range
             tweets = tweepy.Cursor(api.search, q=srch, tweet_mode="extended", since=dSince.strftime("%Y-%m-%d"),
-                                 until=dUntil.strftime("%Y-%m-%d"), lang='en').items(num_tweets/7)
+                                 until=dUntil.strftime("%Y-%m-%d"), lang='en').items(int(num_tweets)//7)
             i = 1
             # print(type(tweepy))
             for tweet in tweets:
@@ -157,15 +160,16 @@ def get_text_pol(data):
 #pol_arr_count = pol_arr
 
 def run_analysis(q, num):
-    sub_arr = [0, 0]
-    pol_arr = [0, 0, 0]
-    
+
     search(q, num)
-    
+
     df = pd.read_csv('data.csv')
     df['Subjectivity'] = df['info'].apply(get_text_sub)
     df['Polarity'] = df['info'].apply(get_text_pol)
-    
+
+    print(sub_arr)
+    print(pol_arr)
+
     make_barchart(pol_arr, 0)
     make_piechart(pol_arr, 0)
 
