@@ -33,8 +33,7 @@ def Search(srch, num_tweets):
 
     # the until parameter limits the collection to tweets sent just before the specified day (11:59pm the previous day)
     filename = "data.csv"
-    sub_arr = [0, 0]
-    pol_arr = [0, 0, 0]
+
 
     with open(filename, mode='w') as data:
         fieldnames = ['index', 'info']
@@ -158,11 +157,15 @@ def get_text_pol(data):
 #pol_arr_count = pol_arr
 
 def run_analysis(q, num):
+    sub_arr = [0, 0]
+    pol_arr = [0, 0, 0]
+    
+    search(q, num)
+    
     df = pd.read_csv('data.csv')
     df['Subjectivity'] = df['info'].apply(get_text_sub)
     df['Polarity'] = df['info'].apply(get_text_pol)
     
-    search(q, num)
     make_barchart(pol_arr, 0)
     make_piechart(pol_arr, 0)
 
