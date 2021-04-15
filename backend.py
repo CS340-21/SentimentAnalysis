@@ -46,7 +46,7 @@ def Search(srch, num_tweets):
             dSince = datetime.datetime.now() - datetime.timedelta(days=i + 1)
             # Change q pararmeter to fetch tweets of a different topic
             # Change items parameter to fetch x amount of tweets for each date range
-            tweets = tweepy.Cursor(api.search, q="twitch", tweet_mode="extended", since=dSince.strftime("%Y-%m-%d"),
+            tweets = tweepy.Cursor(api.search, q=srch, tweet_mode="extended", since=dSince.strftime("%Y-%m-%d"),
                                  until=dUntil.strftime("%Y-%m-%d"), lang='en').items(num_tweets/7)
             i = 1
             # print(type(tweepy))
