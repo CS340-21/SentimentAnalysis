@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import csv
 
+# Converts numerical totals to percentages
 def convert_to_perc(perc):
     total = 0.0
     for i in perc:
@@ -11,7 +12,7 @@ def convert_to_perc(perc):
     for i in range(len(perc)):
         perc[i] = perc[i] / total
 
-
+# Makes a pie chart of numerical data
 def make_piechart(arr):
     convert_to_perc(arr)
 
@@ -22,6 +23,7 @@ def make_piechart(arr):
     ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
     plt.savefig('piechart.png')
 
+# Makes a bar chart of numerical data
 def make_barchart(arr):
     labels = ['Negative', 'Neutral', 'Positive']
     ypos = np.arange(len(labels))
@@ -34,6 +36,7 @@ def make_barchart(arr):
     plt.savefig('barchart.png')
     
 
+# Tracks the count of neutral, positive, and negative polarity    
 def get_pol_sub(value, perc):
     if value > 0:
         perc[2] += 1
