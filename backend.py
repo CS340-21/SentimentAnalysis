@@ -8,24 +8,16 @@ import tweepy
 import json
 import csv
 
-#CONSUMER_KEY = 'X'
-#CONSUMER_SECRET = 'X'
-#ACCESS_KEY = 'X'
-#ACCESS_SECRET = 'X'
-
-#auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-#auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
-
-#api = tweepy.API(auth)
-#this is just for testing, eventually use this to set the search parameter
 sub_arr = [0, 0]
 pol_arr = [0, 0, 0]
 
-def search(srch, num_tweets):
-    CONSUMER_KEY = '6NhgQKlvac5m27tlbjvClYAxD'
-    CONSUMER_SECRET = '7nQ4j5hDlRWE5AGcAxrdw8WqF6yJxzX5gl6nWDmKezpKAvDgtN'
-    ACCESS_KEY = '1057110504244678656-oJHI7FFjqBNTp2prRxXcMMtBJttKEK'
-    ACCESS_SECRET = 'bNsOVnSVVERiJefUt1n6efZPsGtnbFdFYB0ZlvulmcTq3'
+
+def search(srch, num_tweets, ck, cs, ak, a_s):
+
+    CONSUMER_KEY = ck
+    CONSUMER_SECRET = cs
+    ACCESS_KEY = ak
+    ACCESS_SECRET = a_s
 
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
     auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
@@ -51,7 +43,7 @@ def search(srch, num_tweets):
             tweets = tweepy.Cursor(api.search, q=srch, tweet_mode="extended", since=dSince.strftime("%Y-%m-%d"),
                                  until=dUntil.strftime("%Y-%m-%d"), lang='en').items(int(num_tweets)//7)
             i = 1
-            # print(type(tweepy))
+
             for tweet in tweets:
                 try:
                     data_writer.writerow({'index': i, 'info': tweet.retweeted_status.full_text.encode('utf-8')})
@@ -152,16 +144,9 @@ def get_text_pol(data):
     return i
 
 
-#df = pd.read_csv('data.csv')
+def run_analysis(q, num, ck, cs, ak, a_s):
 
-#df['Subjectivity'] = df['info'].apply(get_text_sub)
-#df['Polarity'] = df['info'].apply(get_text_pol)
-
-#pol_arr_count = pol_arr
-
-def run_analysis(q, num):
-
-    search(q, num)
+    search(q, num, ck, cs, ak, a_s)
 
     df = pd.read_csv('data.csv')
     df['Subjectivity'] = df['info'].apply(get_text_sub)
@@ -176,4 +161,3 @@ def run_analysis(q, num):
     make_barchart(sub_arr, 1)
     make_piechart(sub_arr, 1)
 
-#we need to call a method in GUI.py to tell it to load the images
