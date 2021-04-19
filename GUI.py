@@ -1,9 +1,15 @@
 from dearpygui.core import *
 from dearpygui.simple import *
 import csv
+import sys
 from backend import *
 import os
 
+
+CONSUMER_KEY = sys.argv[1]
+CONSUMER_SECRET = sys.argv[2]
+ACCESS_KEY = sys.argv[3]
+ACCESS_SECRET = sys.argv[4]
 
 #window settings
 set_main_window_size(1080, 980)
@@ -33,7 +39,7 @@ def callback(sender, data):
         num_tweets = get_value("Number")
         #this calls the Search function in backend.py with the searched term as
         #the parameter and num_tweets as number of tweets
-        run_analysis(srch_val, num_tweets)
+        run_analysis(srch_val, num_tweets, CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET)
         print("Searched for " + srch_val + "over " + num_tweets + " tweets.")
 
 #method to load images starts here
