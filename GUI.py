@@ -12,7 +12,7 @@ ACCESS_KEY = sys.argv[3]
 ACCESS_SECRET = sys.argv[4]
 
 #window settings
-set_main_window_size(1080, 980)
+set_main_window_size(1620, 792)
 set_theme("Cherry")
 
 class TabInfo:
@@ -70,18 +70,23 @@ def callback(sender, data):
         #the title of the windows will be the same as the filename without extension
         #so save them with the name you want them to display under.
         i = 0
-        h = int((940 / len(tabnames)) + 1)
+        j = 1
+        h = int((940 / ((len(tabnames)) + 1) * 2))
+        w = 541
 
         #open images
         for tb in tabs:
             with window(tb.name, width = 540, height = h):
-                set_window_pos(tb.name, 541, i * h)
+                set_window_pos(tb.name, j * w, i * h)
                 add_drawing(tb.name, width = 300, height = 300)
                 draw_image(tb.name, tb.result, [10, 10], pmax=[300, 300])
                 i += 1
+                if i % 2 == 0:
+                    j += 1
+                    i = 0
         #open csv
-        with window(csv_tab_name, width = 540, height = 470):
-            set_window_pos(csv_tab_name, 0, 471)
+        with window(csv_tab_name, width = 540, height = 396):
+            set_window_pos(csv_tab_name, 0, 397)
             with open(csv_name, newline='') as File:
                 info = csv.reader(File)
                 add_table("Table", ["Index", "Tweet"], hide_headers = True)
@@ -94,7 +99,7 @@ def callback(sender, data):
 
 #method to load images ends here
 
-with window("Sentiment Analysis", width = 540, height = 470):
+with window("Sentiment Analysis", width = 540, height = 396):
     set_window_pos("Sentiment Analysis", 0, 0)
     add_text("Enter search:")
     add_input_text("Input", label = "")
