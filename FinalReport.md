@@ -20,7 +20,7 @@ No Changes
 # Technology
 The software is a desktop application that gathers tweets via Twitter’s web APIs, organizes relevant data, performs sentiment analysis via machine learning libraries 
 and algorithms, and presents data via data plotting and data graphing libraries.
-The project's components and libraries are written in Python 3.7 and include:
+The project's components and installed libraries are written in Python and include:
 
     - Tweepy - A Python library for collecting tweets with Twitter's web API
     - Textblob - A Python machine learning library that perform sentiment analysis
