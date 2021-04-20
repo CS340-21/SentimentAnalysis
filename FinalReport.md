@@ -23,7 +23,7 @@ and algorithms, and presents data via data plotting and data graphing libraries.
 The project's components and installed libraries are written in Python and include:
 
     - Tweepy - A Python library for collecting tweets with Twitter's web API
-    - Textblob - A Python machine learning library that perform sentiment analysis
+    - Textblob & Pandas - A Python machine learning library that perform sentiment analysis and a Python library for handling large amounts of data
     - Matplotlib & Numpy - Python data representation libraries that organize data into charts and graphs
     - Dearpygui - A Python GUI library to build the frontend of the application
 
