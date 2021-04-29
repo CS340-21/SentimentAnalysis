@@ -46,7 +46,7 @@ usage of Twitter's API. This change also allows for faster data collection.
 
 # Team
 The team members' roles remained static throughout development. All team members contributed equally
-Throughout the development of the project, team members filled the following roles:
+throughout the development of the project, team members filled the following roles:
 
 Backend Development:
 
@@ -64,7 +64,7 @@ We were able to complete all of our goals for the product on schedule.
 # Reflection
 Overall, the project went well. The planning aspect was straight forward and well organized. This allowed for development to be very streamline. All team members 
 were able to complete their portions of the project on time. Testing went well and we did not run into any major issues with the project. Team management also went well. 
-We were able to meet virtually (via Zoom) several times during each sprint and also communicated through GroupMe. There was no part of the project that did not go well.
+We were able to meet virtually (via Zoom) several times during each sprint and also communicated through GroupMe. The consistent communication allowed us to work well as a team.
 
 Overall, we consider the project a success. All members contributed equally and all aspects such as planning, development, testing, and team management went smoothly
 and successfully.
